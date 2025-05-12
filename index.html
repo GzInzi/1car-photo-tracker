@@ -184,16 +184,17 @@
       renderEntries(searchInput.value);
       form.reset();
 
-      // Send to Google Sheets (optional)
-      fetch("https://script.google.com/macros/s/AKfycbwJc1IaW3Y6IGkFFdAGFsxuCvs2VyqP4hjz7dNsCmjg_AvchpZKRp3zrSkAdToL5hC5/exec", {
+      // Send to Google Sheets
+      fetch("https://script.google.com/macros/s/AKfycbyR6E0zXvbWjNbjsFrEknAbBc6dPkV35ndPjPMxoQuYYichXMYB-Hv0YcGhLdXgG33R/exec", {
         method: "POST",
         body: JSON.stringify(entry),
         headers: {
           "Content-Type": "application/json"
         }
-      }).then(res => res.text())
-        .then(data => console.log("Sent to Sheets:", data))
-        .catch(err => console.error("Error sending to Sheets:", err));
+      })
+      .then(res => res.text())
+      .then(data => console.log("Sent to Sheets:", data))
+      .catch(err => console.error("Error sending to Sheets:", err));
     });
 
     searchInput.addEventListener("input", () => {
